@@ -12,10 +12,6 @@ public class Orders {
 	@Id
   	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Integer ordersId;
-
-	@NotNull
-    @Column(name = "ingredients")
-	private Integer ingredients;
 	
 	@NotNull
     @Column(name = "price")
@@ -47,14 +43,6 @@ public class Orders {
 	
 	public Integer getOrdersId() {
 		return ordersId;
-	}
-	
-	public void setIngredients(Integer ingredients) {
-		this.ingredients = ingredients;
-	}
-	
-	public Integer getIngredients() {
-		return ingredients;
 	}
 	
 	public void setPrice(Integer price) {

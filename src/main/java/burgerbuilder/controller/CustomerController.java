@@ -24,12 +24,12 @@ public class CustomerController {
 	private CustomerRepository customerRepository;
 
 	@PostMapping(path="/add") // Map ONLY POST Requests
-	public @ResponseBody String addNewCustomer (@RequestBody Customer customer) {	
+	public @ResponseBody Integer addNewCustomer (@RequestBody Customer customer) {	
 		customerRepository.save(customer);
-		return "Saved";
+		return customer.getCustomerId();
 	}
 	
-	@GetMapping(path="/find/{id}") // Map ONLY POST Requests
+	@GetMapping(path="/find/{id}") // Map ONLY GET Requests
 	public @ResponseBody Optional<Customer> retrieve (@PathVariable("id") int id) {
 		return customerRepository.findById(id);
 	}

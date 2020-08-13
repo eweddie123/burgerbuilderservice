@@ -13,10 +13,6 @@ public class Customer {
 	private Integer customerId;
 	
 	@NotNull
-    @Column(name = "address")
-	private Integer address;
-	
-	@NotNull
     @Column(name = "email")
 	private String email;
 	
@@ -38,14 +34,6 @@ public class Customer {
 	
 	public Integer getCustomerId() {
 		return this.customerId;
-	}
-	
-	public void setAddress(Integer address) {
-		this.address = address;
-	}
-	
-	public Integer getAddress() {
-		return this.address;
 	}
 	
 	public void setEmail(String email) {

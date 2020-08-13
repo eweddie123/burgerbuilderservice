@@ -22,9 +22,9 @@ public class OrdersController {
 	private OrdersRepository ordersRepository;
 	
 	@PostMapping(path="/add") // Map ONLY POST Requests
-	public @ResponseBody String addNewOrders (@RequestBody Orders orders) {
+	public @ResponseBody Integer addNewOrders (@RequestBody Orders orders) {
 		ordersRepository.save(orders);
-		return "Saved";
+		return orders.getOrdersId();
 	}
 	
 	@DeleteMapping(path="/delete/{id}") // Map ONLY DELETE Requests
@@ -33,7 +33,7 @@ public class OrdersController {
 		return "Deleted";
 	}
 	
-	@GetMapping(path="/find/{id}") // Map ONLY DELETE Requests
+	@GetMapping(path="/find/{id}") // Map ONLY GET Requests
 	public @ResponseBody String retrieve (@PathVariable("id") int id) {
 		ordersRepository.findById(id);
 		return "Deleted";
