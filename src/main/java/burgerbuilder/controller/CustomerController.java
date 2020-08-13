@@ -5,6 +5,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,45 +22,15 @@ import burgerbuilder.domain.Customer;
 public class CustomerController {
 	@Autowired
 	private CustomerRepository customerRepository;
-	
-//	public String addNewCustomer (Customer customer) {
-//		customerRepository.save(customer);
-//		return "Saved";
-//	}
-	
+
 	@PostMapping(path="/add") // Map ONLY POST Requests
-	public @ResponseBody String addNewCustomer (@RequestBody Customer customer) {
-//		
-//		CustomerDetails details = new Gson().fromJson(json, CustomerDetails.class);
-//		Customer customer = new Customer();
-//		
-//		//Address
-//		AddressController ac = new AddressController();
-//		Location loc = details.getAddress();
-//		String street = loc.getStreet();
-//		String zipcode = loc.getZipcode();
-//		String country = loc.getCountry();
-//		
-//		Optional<Address> address = ac.getAddress(street, zipcode, country);
-//		if (address.equals(null)) {
-//			Address newAddress = new Address();
-//			newAddress.setCountry(country);
-//			newAddress.setStreet(street);
-//			newAddress.setZipcode(zipcode);
-//			ac.addNewAddress(newAddress);
-//			customer.setAddressId(newAddress.getAddressId());
-//		} else {
-//			customer.setAddressId(address.get().getAddressId());
-//		}
-//		customer.setEmail(details.getEmail());
-//		customer.setName(details.getName());
-		
+	public @ResponseBody String addNewCustomer (@RequestBody Customer customer) {	
 		customerRepository.save(customer);
 		return "Saved";
 	}
-	@GetMapping(path="/get") // Map ONLY POST Requests
-	public @ResponseBody Optional<Customer> retrieve (@RequestParam String name, @RequestParam Integer address, @RequestParam String email) {
-		return customerRepository.findByNameAndAddressAndEmail(name, address, email);
+	
+	@GetMapping(path="/find/{id}") // Map ONLY POST Requests
+	public @ResponseBody Optional<Customer> retrieve (@PathVariable("id") int id) {
+		return customerRepository.findById(id);
 	}
-	//TODO: Add GET and PUT APIs
 }

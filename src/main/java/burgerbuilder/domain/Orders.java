@@ -29,6 +29,22 @@ public class Orders {
     @Column(name = "deliveryMethod")
 	private String deliveryMethod;
 	
+	@NotNull
+    @Column(name = "salad")
+	private Integer salad;
+	
+	@NotNull
+    @Column(name = "bacon")
+	private Integer bacon;
+	
+	@NotNull
+    @Column(name = "meat")
+	private Integer meat;
+	
+	@NotNull
+    @Column(name = "cheese")
+	private Integer cheese;
+	
 	public Integer getOrdersId() {
 		return ordersId;
 	}
@@ -63,5 +79,37 @@ public class Orders {
 	
 	public String getDeliveryMethod() {
 		return this.deliveryMethod;
+	}
+	
+	public void setSalad(Integer salad) {
+		this.salad = salad;
+	}
+	
+	public Integer getSalad() {
+		return this.salad;
+	}
+	
+	public void setBacon(Integer bacon) {
+		this.bacon = bacon;
+	}
+	
+	public Integer getBacon() {
+		return this.bacon;
+	}
+	
+	public void setMeat(Integer meat) {
+		this.meat = meat;
+	}
+	
+	public Integer getMeat() {
+		return this.meat;
+	}
+	
+	public void setCheese(Integer cheese) {
+		this.cheese = cheese;
+	}
+	
+	public Integer getCheese() {
+		return this.cheese;
 	}
 }

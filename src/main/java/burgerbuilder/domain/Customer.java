@@ -24,6 +24,18 @@ public class Customer {
     @Column(name = "name")
 	private String name;
 	
+	@NotNull
+    @Column(name = "country")
+	private String country;
+	
+	@NotNull
+    @Column(name = "street")
+	private String street;
+	
+	@NotNull
+    @Column(name = "zipcode")
+	private String zipcode;
+	
 	public Integer getCustomerId() {
 		return this.customerId;
 	}
@@ -50,5 +62,29 @@ public class Customer {
 	
 	public String getName() {
 		return this.name;
+	}
+	
+	public void setCountry(String country) {
+		this.country = country;
+	}
+	
+	public String getCountry() {
+		return this.country;
+	}
+	
+	public void setStreet(String street) {
+		this.street = street;
+	}
+	
+	public String getStreet() {
+		return this.street;
+	}
+	
+	public void setZipcode(String zipcode) {
+		this.zipcode = zipcode;
+	}
+	
+	public String getZipcode() {
+		return this.zipcode;
 	}
 }
