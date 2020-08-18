@@ -15,7 +15,7 @@ public class Orders {
 	
 	@NotNull
     @Column(name = "price")
-	private Integer price;
+	private Double price;
 	
 	@NotNull
     @Column(name = "customer")
@@ -45,11 +45,11 @@ public class Orders {
 		return ordersId;
 	}
 	
-	public void setPrice(Integer price) {
+	public void setPrice(Double price) {
 		this.price = price;
 	}
 	
-	public Integer getPrice() {
+	public Double getPrice() {
 		return price;
 	}
 	

@@ -1,6 +1,9 @@
 package burgerbuilder.controller;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import burgerbuilder.dao.OrdersRepository;
 import burgerbuilder.domain.Orders;
 
+@Service
 @CrossOrigin
 @RestController // This means that this class is a Controller
 @RequestMapping(path="/orders") // This means URL's start with gathering (after Application path)
@@ -34,8 +38,12 @@ public class OrdersController {
 	}
 	
 	@GetMapping(path="/find/{id}") // Map ONLY GET Requests
-	public @ResponseBody String retrieve (@PathVariable("id") int id) {
-		ordersRepository.findById(id);
-		return "Deleted";
+	public @ResponseBody Optional<Orders> retrieve (@PathVariable("id") int id) {
+		return ordersRepository.findById(id);
+	}
+	
+	@GetMapping(path="/find") // Map ONLY GET Requests
+	public @ResponseBody Iterable<Orders> retrieve () {
+		return ordersRepository.findAll();
 	}
 }
