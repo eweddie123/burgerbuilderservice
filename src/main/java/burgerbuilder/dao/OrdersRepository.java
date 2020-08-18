@@ -5,8 +5,6 @@ import org.springframework.data.repository.CrudRepository;
 import burgerbuilder.domain.Orders;
 
 public interface OrdersRepository extends CrudRepository<Orders, Integer> {
-	Iterable<Optional<Orders>> findByOrdersId(Integer ordersId);
 	Iterable<Optional<Orders>> findByCustomer(Integer customer);
 	Iterable<Optional<Orders>> findByDeliveryMethod(String deliveryMethod);
-	Iterable<Optional<Orders>> findByIngredients(Integer ingredients);
 }
